@@ -208,8 +208,8 @@ class NginxFull < Formula
       cc_opt += " -I#{libressl.include}"
       ld_opt += " -L#{libressl.lib}"
     else
-      cc_opt += " -I#{openssl.include}"
-      ld_opt += " -L#{openssl.lib}"
+      # cc_opt += " -I#{openssl.include}"
+      # ld_opt += " -L#{openssl.lib}"
     end
 
     if build.with? "xsltproc-module"
