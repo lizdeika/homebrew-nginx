@@ -211,7 +211,6 @@ class NginxFull < Formula
     args = %W[
       --prefix=#{prefix}
       --with-pcre
-      --with-ipv6
       --sbin-path=#{bin}/nginx
       --with-cc-opt=#{cc_opt}
       --with-ld-opt=#{ld_opt}
