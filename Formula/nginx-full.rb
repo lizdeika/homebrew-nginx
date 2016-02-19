@@ -199,7 +199,7 @@ class NginxFull < Formula
     inreplace "conf/nginx.conf", "    #}\n\n}", "    #}\n    include servers/*;\n}"
 
     pcre = Formula["pcre"]
-    openssl = Formula["openssl101"]
+    openssl = Formula["openssl"]
     libressl = Formula["libressl"]
     cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.include}"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.lib}"
@@ -222,7 +222,6 @@ class NginxFull < Formula
 
     args = %W[
       --prefix=#{prefix}
-      --with-http_ssl_module
       --with-pcre
       --with-ipv6
       --sbin-path=#{bin}/nginx
