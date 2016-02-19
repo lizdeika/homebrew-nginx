@@ -104,8 +104,6 @@ class NginxFull < Formula
   depends_on "pcre"
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
-  depends_on "openssl" => :recommended
-  depends_on "libressl" => :optional
   depends_on "libzip" if build.with? "unzip"
   depends_on "libxml2" if build.with? "xslt"
   depends_on "libxslt" if build.with? "xslt"
@@ -199,18 +197,8 @@ class NginxFull < Formula
     inreplace "conf/nginx.conf", "    #}\n\n}", "    #}\n    include servers/*;\n}"
 
     pcre = Formula["pcre"]
-    openssl = Formula["openssl"]
-    libressl = Formula["libressl"]
     cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.include}"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.lib}"
-
-    if build.with? "libressl"
-      cc_opt += " -I#{libressl.include}"
-      ld_opt += " -L#{libressl.lib}"
-    else
-      # cc_opt += " -I#{openssl.include}"
-      # ld_opt += " -L#{openssl.lib}"
-    end
 
     if build.with? "xsltproc-module"
       icu = Formula["icu4c"]
